@@ -50,15 +50,21 @@ public class ScannerReadCSVFile
             Scanner numbers = new Scanner(line).useDelimiter(",");
             int total = 0;
             int classes = 0;
-            String first = numbers.next();
-            while (numbers.hasNextInt()) {
-                int tokens = numbers.nextInt(); 
-                total = total + tokens;
-                classes++;
+            while (numbers.hasNext()) {
+                String first = numbers.next();
+                while (numbers.hasNextInt()) {
+                    int tokens = numbers.nextInt(); 
+                    total = total + tokens;
+                    classes++;
+                }
+                int average;
+                if (classes == 0) {
+                    average = 0;
+                } else {
+                    average = total/classes;
+                }
+                System.out.println(first + ":  " + average);
             }
-            int average = total/classes;
-            System.out.println(first + ":  " + average);
-            
         }
     }
 
